@@ -6,9 +6,9 @@ _Plugin containers for docker-compose to create backups using duplicity_
 
 Following custom images are build using docker multi-stage build and appropriate targets in the actual build. They are based on [docker-duplicity](https://github.com/Tecnativa/docker-duplicity).
 
-- `ghcr.io/wafm-diagnostik/duplicity-base:main` \
+- `ghcr.io/wafm-diagnostik/duplicity-base:v1.0.0` \
   Base Image for all WAfM Backup Jobs, defining a weekly full-backup (Job 500) and a weekly cleanup of old backups (Job 999). The cleanup retains the last three full-backups including their increments.
-- `ghcr.io/wafm-diagnostik/duplicity-mysql:main` \
+- `ghcr.io/wafm-diagnostik/duplicity-mysql:v1.0.0` \
   Extending the base Image by adding mysql client utilities. A mysql dump job is added too (Job 201). \
   The Job is set up to run daily and weekly and dumps all databases to `$SRC/mysql-database-dump.sql`. \
   The dump is always saved under the same name. This allows duplicity to properly back up increments of the dump. \
@@ -33,7 +33,7 @@ To back up data from a Service Stack, the following setup is required
    services:
        ...
        backup:
-           image: ghcr.io/wafm-diagnostik/duplicity-mysql:main
+           image: ghcr.io/wafm-diagnostik/duplicity-mysql:v1.0.0
            # hostname is required for duplicity
            # think of it as your backup name
            hostname: my-service-backup
