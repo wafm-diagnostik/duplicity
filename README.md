@@ -4,7 +4,7 @@ _Plugin containers for docker-compose to create backups using duplicity_
 
 ## Custom Images
 
-Following custom images are build using docker multi-stage build and appropriate targets in the actual build. They are based on `ghcr.io/tecnativa/docker-duplicity`.
+Following custom images are build using docker multi-stage build and appropriate targets in the actual build. They are based on [docker-duplicity](https://github.com/Tecnativa/docker-duplicity).
 
 - `ghcr.io/wafm-diagnostik/duplicity-base:main` \
   Base Image for all WAfM Backup Jobs, defining a weekly full-backup (Job 500) and a weekly cleanup of old backups (Job 999). The cleanup retains the last three full-backups including their increments.
